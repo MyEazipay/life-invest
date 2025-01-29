@@ -5,7 +5,9 @@ import type { StockQuote, StockError, WatchlistItem, StockSearchResult } from '.
 interface StockState {
   symbolInChart: string | null;
   quotes: Map<string, StockQuote>;
+  popularStocks: Map<string, StockQuote>;
   errors: Map<string, StockError>;
+  isUpdatingChart: boolean;
   watchlist: WatchlistItem[];
   isInitializing: boolean;
   loading: boolean;
@@ -14,6 +16,7 @@ interface StockState {
   searchResults: StockSearchResult | null;
   lastUpdated: Date | null;
   pollingInterval: number | null;
+  chartFromSearch: boolean | null;
 };
 
 const POLLING_INTERVAL = 5 * 60 * 1000;
@@ -24,7 +27,10 @@ export const useStockStore = defineStore('stock', {
     state: (): StockState => ({
       symbolInChart: import.meta.env.VITE_DEFAULT_SYMBOL_IN_CHART,
       quotes: new Map(),
+      popularStocks: new Map(),
+      chartFromSearch: false,
       errors: new Map(),
+      isUpdatingChart: false,
       watchlist: [],
       isInitializing: true,
       searchResults: null,
@@ -40,14 +46,11 @@ export const useStockStore = defineStore('stock', {
       async searchSymbol(symbol: string) {
         try {
           this.isSearching = true;
-          // this.error = null;
           const quote = await StockService.searchSymbol(symbol);
           this.isSearching = false;
           return quote;
-          // this.quotes.set(symbol, quote);
         } catch (error) {
           console.log(error);
-          // this.error = error instanceof Error ? error.message : 'Failed to fetch quote';
         } finally {
           this.isSearching = false;
         }
@@ -56,12 +59,10 @@ export const useStockStore = defineStore('stock', {
       async fetchQuote(symbol: string) {
         try {
           this.loading = true;
-          // this.error = null;
           const quote = await StockService.getQuote(symbol);
           this.quotes.set(symbol, quote);
         } catch (error) {
           console.log(error);
-          // this.error = error instanceof Error ? error.message : 'Failed to fetch quote';
         } finally {
           this.loading = false;
         }
@@ -78,19 +79,18 @@ export const useStockStore = defineStore('stock', {
             this.fetchQuoteWithRetry(symbol, attempts - 1);
           }
           console.error(error)
-          // this.error = error instanceof Error ? error.message : 'Failed to fetch quote';
         } finally {
           this.loading = false;
         }
       },
 
-      async fetchAllQuotes() {
+      async fetchAllPopularStocks() {
         try {
           this.loading = true;
           let fetchPromises = import.meta.env.VITE_TOP_SYMBOLS.split(',').map(async(symbol: string)=>{
             try {
               const quote = await StockService.getQuote(symbol);
-              this.quotes.set(symbol, quote);
+              this.popularStocks.set(symbol, quote);
             } catch (error) {
               this.errors.set(symbol, {
                 symbol,
@@ -116,10 +116,10 @@ export const useStockStore = defineStore('stock', {
           clearInterval(this.pollingInterval)
         }
 
-        this.fetchAllQuotes();
+        this.fetchAllPopularStocks();
 
         this.pollingInterval = window.setInterval(()=>{
-          this.fetchAllQuotes();
+          this.fetchAllPopularStocks();
         }, POLLING_INTERVAL)
       },
 
@@ -143,8 +143,4 @@ export const useStockStore = defineStore('stock', {
         this.watchlist = this.watchlist.filter(item => item.symbol !== symbol);
       }
     },
-  
-    // persist: {
-    //   paths: ['watchlist']
-    // }
-});
+  });

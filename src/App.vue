@@ -19,11 +19,9 @@
     store.stopPolling();
   });
 
-  console.log(store.error)
 </script>
 
 <template>
-  <!-- <div v-if="store.isInitializing === true && isResult === false"> -->
   <div v-if="store.isInitializing === true && isResult === false">
     <Loading />
   </div>

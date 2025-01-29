@@ -153,3 +153,7 @@ a{
   background-color: #14181f;
   border-radius: 0px; 
 }
+
+canvas {
+  height: 200px
+}
