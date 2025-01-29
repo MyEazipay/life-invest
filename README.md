@@ -68,9 +68,3 @@ yarn
 1. Enter a stock ticker symbol (e.g., AAPL, TSLA) in the search bar.
 2. View near real-time stock details and historical trends.
 
-
-
-## Contributing
-
-Contributions are welcome!
-To contribute:
