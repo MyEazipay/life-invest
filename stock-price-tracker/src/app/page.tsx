@@ -1,9 +1,12 @@
+
 import SearchAndChartWrapper from "@/components/search-and-chart-wrapper";
+import { promises as fs } from 'fs';
 
  const Home = async () => {
 
-  const data = await fetch(`${process.env.SITE_URL}/data/stock-list.json`);
-  const stockList = await data.json();
+  const file = await fs.readFile(process.cwd() + '/public/data/stock-list.json', 'utf8');
+  const stockList = JSON.parse(file);
+
 
   return (
     <div className="items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 max-w-[1440px]">
