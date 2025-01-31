@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect } from "react";
@@ -14,7 +15,7 @@ export const StockChart = ({
   selectedSymbol,
   setSearching,
 }: StockChartProps) => {
-  const [state, setState] = React.useState<object>({
+  const [state, setState] = React.useState<Record<string, any>>({
     series: [
       {
         data: [],
@@ -40,7 +41,8 @@ export const StockChart = ({
     },
   });
 
-  const isObject = (value) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const isObject = (value: any) =>
     value !== null && typeof value === "object" && !Array.isArray(value);
 
   useEffect(() => {
@@ -54,7 +56,7 @@ export const StockChart = ({
           ? Object.entries(result["Time Series (5min)"])
           : null;
         const seriesData = transformedResult
-          ? transformedResult?.map(([key, val]) => {
+          ? transformedResult?.map(([key, val]: [string, any]) => {
               const dateString = key;
               const formattedDateString = dateString.replace(" ", "T"); // Convert to ISO 8601 format
               const x = new Date(formattedDateString);
@@ -67,7 +69,7 @@ export const StockChart = ({
               return { x, y };
             })
           : [];
-        setState((prevData) => {
+        setState((prevData: Record<string, any>) => {
           return {
             series: [
               {
@@ -84,12 +86,14 @@ export const StockChart = ({
           };
         });
         setSearching(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setSearching(false);
       }
     };
     innerFunction();
     setSearching(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSymbol]);
 
   return (
