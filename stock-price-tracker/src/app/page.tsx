@@ -2,7 +2,7 @@ import SearchAndChartWrapper from "@/components/search-and-chart-wrapper";
 
  const Home = async () => {
 
-  const data = await fetch('http://localhost:3000/data/stock-list.json');
+  const data = await fetch(`${process.env.SITE_URL}/data/stock-list.json`);
   const stockList = await data.json();
 
   return (
