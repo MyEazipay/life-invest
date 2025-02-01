@@ -1,72 +1,75 @@
-# life-invest
+# LifeInvest
 
-This project aims to assess your frontend development skills by building a stock price tracking application. You'll demonstrate your ability to:
+## Overview
+LifeInvest is a stock price tracking application built to show realtime data of stock prices in the US exchange market.
 
-  * **UI/UX Design:** Create a user-friendly and visually appealing interface for tracking stock prices.
-  * **API Integration:** Integrate with a stock price API to fetch real-time or historical stock data.
-  * **Business Logic Implementation:** Implement core application logic, such as handling user input, displaying stock information, and potentially adding features like watchlists or portfolio tracking.
-  * **TypeScript Usage:** Utilize TypeScript for type safety and improved code maintainability.
-  * **Performance Optimization:** Implement techniques to optimize data fetching and UI updates for a smooth user experience.
+## Video Walkthrough
 
-**Technical Requirements:**
 
-  * **Framework:** Vue.js, React, or Angular (your choice)
-  * **Language:** TypeScript
-  * **API:**
-      * **Alpha Vantage:** [https://www.alphavantage.co/](https://www.google.com/url?sa=E&source=gmail&q=https://www.alphavantage.co/) (Free tier available)
-      * **Finnhub:** [https://finnhub.io/](https://www.google.com/url?sa=E&source=gmail&q=https://finnhub.io/) (Free tier available)
-  * **Features:**
-      * **User Interface:**
-          * Design a clean and intuitive interface for searching and displaying stock information.
-          * Implement responsive design for various screen sizes.
-      * **API Integration:**
-          * Fetch real-time or historical stock data from the chosen API.
-          * Handle API requests and responses efficiently.
-          * Implement error handling and graceful degradation for API failures.
-      * **Business Logic:**
-          * Allow users to search for stocks by ticker symbol.
-          * Display key stock information (e.g., price, change, volume, chart).
-          * (Optional) Implement features like watchlists or portfolio tracking.
-      * **TypeScript Usage:**
-          * Utilize TypeScript throughout the project for type safety.
-          * Define interfaces and types for data structures.
-      * **Performance Optimization:**
-          * Optimize data fetching and UI updates for a smooth user experience.
-          * Consider techniques like data caching and lazy loading.
+https://github.com/user-attachments/assets/79e01587-6998-4bb8-98dd-807bfd56cdbc
 
-**Evaluation Criteria:**
 
-  * **UI/UX Design:**
-      * User-friendliness and intuitiveness of the interface.
-      * Visual appeal and aesthetics.
-      * Responsiveness and adaptability to different screen sizes.
-  * **API Integration:**
-      * Correct and efficient use of the chosen stock price API.
-      * Proper handling of API requests and responses.
-      * Error handling and graceful degradation.
-  * **Business Logic:**
-      * Accuracy and completeness of the implemented logic.
-      * User input handling and UI updates.
-      * Implementation of additional features (if applicable).
-  * **TypeScript Usage:**
-      * Effective use of TypeScript for type safety.
-      * Proper use of interfaces and types.
-  * **Performance Optimization:**
-      * Application performance and responsiveness.
-      * Implementation of performance optimization techniques.
-  * **Code Quality:**
-      * Code readability, maintainability, and adherence to best practices.
-      * Code organization and structure.
-      * Use of meaningful variable and function names.
 
-**Deliverables:**
+## API Integration
+- Fetches current stock prices from [Finnhub](https://finnhub.io)
+- Fetches historical stock data for charting from [Alpha Vantage](https://alphavantage.co)
 
-  * **Git Repository:** Link to the Git repository named "LifeInvest" containing the project code.
-  * **Presentation (Optional):** A short presentation (optional) showcasing the project and highlighting key features and implementation details.
+## Features 
+- Search for stocks using their ticker symbols
+- Display key stock details
+    - Current Price
+    - Price hange
+    - Stock symbol
+    - Company name
+    - Historical Data with charts
 
-**Tips for Success:**
+## Tech Stack
+- Framework: Vue.js
+- Language: TypeScript
+- API: Alpha Vantage / Finnhub
+- State Management: Pinia
+- Styling: Tailwind CSS
 
-  * **API Exploration:** Familiarize yourself with the chosen API's documentation and available endpoints.
-  * **Data Visualization:** Consider incorporating charts or graphs to visualize stock price trends.
-  * **User Experience:** Focus on creating a user-friendly and intuitive experience for searching and viewing stock information.
+## Project Setup
+
+1. Clone the Repository
+
+```sh
+git clone https://github.com/EmmanuelOmoiya/LifeInvest.git
+cd LifeInvest
+```
+
+2. Install Dependencies
+
+```sh
+npm install
+# or
+pnpm install
+# or 
+npm install
+```
+
+3. Setup Environment Variables
+
+```sh
+VITE_FINNHUB_API_KEY=your_alpha_vantage_api_key
+VITE_ALHPAVANTAGE_API_KEY=your_alpha_vantage_api_key
+VITE_FINNHUB_API_EXCHANGE_CODE=your_preferred_exchage
+VITE_DEFAULT_SYMBOL_IN_CHART=your_default_symbol_showing_in_chart
+VITE_TOP_SYMBOLS=your_top_symbols
+```
+
+4. Start the development server
+
+```sh
+npm run dev
+# or
+pnpm run dev
+# or 
+yarn
+```
+
+## Usage
+1. Enter a stock ticker symbol (e.g., AAPL, TSLA) in the search bar.
+2. View near real-time stock details and historical trends.
 

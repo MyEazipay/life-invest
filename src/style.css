@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/assets/fonts/Aeonik-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Aeonik-Medium';
+  src: url('/assets/fonts/Aeonik-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'Aeonik-Bold';
+  src: url('/assets/fonts/Aeonik-Bold.woff2');
+}
+
+@font-face {
+  font-family: 'Aeonik-Black';
+  src: url('/assets/fonts/Aeonik-Black.woff2');
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  font-family: 'Aeonik', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  /* padding: 0;
+  margin: 0; */
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  /* background-color: #1a1a1a; */
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Aeonik', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@theme {
+  --color-primary: #11453b;
+  --color-white: #fff;
+  --color-purple: #3f3cbb;
+  --color-midnight: #121063;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
+}
+
+a{
+  color: #000;
+}
+
+.bcg-gradient {
+  background-image: linear-gradient(180deg,#e7f4df,white)
+}
+
+.hamburger {
+ background-image: none;
+ background-color: transparent;
+ -webkit-appearance: button;
+ padding: 0;
+ display: grid;
+ gap: 4px;
+ cursor: pointer;
+}
+
+.hamburger span {
+  display: inline-block;
+  height: 2px;
+  width: 20px;
+  background-color: #14181f;
+  border-radius: 0px; 
+}
+
+canvas {
+  height: 200px
+}
