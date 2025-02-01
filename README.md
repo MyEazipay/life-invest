@@ -5,6 +5,11 @@ LifeInvest is a stock price tracking application built to show realtime data of 
 
 ## Video Walkthrough
 
+
+https://github.com/user-attachments/assets/79e01587-6998-4bb8-98dd-807bfd56cdbc
+
+
+
 ## API Integration
 - Fetches current stock prices from [Finnhub](https://finnhub.io)
 - Fetches historical stock data for charting from [Alpha Vantage](https://alphavantage.co)
